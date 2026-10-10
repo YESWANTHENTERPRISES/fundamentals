@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: institutional-macro-sentinels
+    env: python
+    region: oregon
+    plan: free
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: PORT
+        value: 8080
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: TG_BOT_TOKEN_FOREX
+        sync: false
+      - key: TG_BOT_TOKEN_COMMODITIES
+        sync: false
+      - key: TG_BOT_TOKEN_INDICES
+        sync: false
